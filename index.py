@@ -282,7 +282,6 @@ with implementation:
                
             input_pred = mod.predict(input_norm)
 
-
             st.subheader('Hasil Prediksi')
             st.write('Menggunakan Pemodelan :', model)
 

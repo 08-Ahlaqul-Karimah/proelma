@@ -196,7 +196,6 @@ with implementation:
             df_max = X.max()
             input_norm = ((inputs - df_min) / (df_max - df_min))
             input_norm = np.array(input_norm).reshape(1, -1)
-\
             if model == 'K-NN':
                 mod = knn 
             if model == 'Decision Tree':

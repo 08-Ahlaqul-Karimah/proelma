@@ -13,51 +13,20 @@ from sklearn.tree import DecisionTreeClassifier
 # warnings.filterwarnings("ignore")
 
 
-st.title("Web Apps - Star Dataset to Predict Stars Types")
+st.title("Data PT Petrosea Tbk")
 
-st.write("================================================================================")
-
-st.write("Name :Isnaini")
-st.write("Nim  :200411100038")
-st.write("Grade: Penambangan Data c")
+st.write("Name : Elmatia Dwi Uturiyah")
+st.write("Nim  :200411100113")
+st.write("Name : Elmatia Dwi Uturiyah")
+st.write("Nim  :200411100113")
 
 data_set_description, data, preprocessing, modeling, implementation = st.tabs(["Data Set Description", "Data", "Preprocessing", "Modeling", "Implementation"])
 
 with data_set_description:
-    st.write("""# Data Set Description """)
-    st.write("###### Data Set Ini Adalah : Predict Star Types ")
-    st.write("###### Sumber Data Set dari Kaggle : https://www.kaggle.com/datasets/deepu1109/star-dataset")
-    st.write("""Dalam dataset ini terdapat 59 data dan 7 kolom yaitu Temperature_(K),Luminosity(L/Lo),Radius(R/Ro),Absolute_magnitude(Mv),Star_type,Star_Color,Spectral_Class. 
-    """)
-    st.write("""###### DATASET INFO : """)
-    st.write("""1. Ini adalah kumpulan data yang terdiri dari beberapa fitur bintang, diantaranya :  :
-    Absolute Temperature (in K)
-    Relative Luminosity (L/Lo)
-    Relative Radius (R/Ro)
-    Absolute Magnitude (Mv)
-    Star Color (white,Red,Blue,Yellow,yellow-orange etc)
-    Spectral Class (O,B,A,F,G,K,,M)
-    Star Type *(Red Dwarf, Brown Dwarf, White Dwarf, Main Sequence , SuperGiants, HyperGiants)*
-    Lo = 3.828 x 10^26 Watts (Avg Luminosity of Sun)
-    Ro = 6.9551 x 10^8 m (Avg Radius of Sun)
-    """)
-    st.write("""2.Spectral Class :
-    ini akan menjadi outputnya yaitu kelas scpectral.Dalam Aplikasi ini  akan emnghasilkan 7 prediksi  yaitu O,B,A,F,G,K,,M.
-    """)
-    st.write("""Memprediksi Spectral Class (output) :
-
-    1. O
-    2. B
-    3. A 
-    4. F
-    5.G
-    6.K
-    7.M
-    
-    """)
-    st.write("###### Aplikasi ini untuk : Star Dataset To Predict Star Types (Kumpulan Data Bintang Untuk Memprediksi Jenis Bintang) ")
-    st.write("###### Source Code Aplikasi ada di Github anda bisa acces di link : https://github.com/135-ShintaNuriyatulMahmudiyah/PenambanganDataWeb ")
-    st.write("###### Untuk Wa saya anda bisa hubungi nomer ini : http://wa.me/6285704097096 ")
+    st.write("PT Petrosea Tbk menyediakan teknik, konstruksi, pertambangan, dan layanan lainnya untuk sektor minyak dan gas, infrastruktur, industri dan manufaktur, dan utilitas di Indonesia dan internasional. Ini beroperasi melalui tiga segmen: Pertambangan, Layanan, dan Rekayasa dan Konstruksi. Segmen Pertambangan menyediakan jasa kontrak penambangan, termasuk pengupasan lapisan tanah penutup, pengeboran, peledakan, pengangkatan, pengangkutan, tambang, dan jasa rekanan tambang. Segmen Layanan menawarkan fasilitas basis pasokan dan layanan pelabuhan. Segmen Teknik dan Konstruksi menyediakan serangkaian layanan teknik, pengadaan, dan konstruksi, termasuk uji tuntas teknis, studi kelayakan, desain teknik, manajemen proyek, pengadaan dan logistik, penyewaan pabrik dan peralatan, serta layanan operasi dan komisioning. Segmen ini juga memasok tenaga perdagangan terampil. Perusahaan didirikan pada tahun 1972 dan berkantor pusat di Tangerang Selatan, Indonesia. PT Petrosea Tbk merupakan anak perusahaan dari PT Indika Energy Tbk. Per 28 Juli 2022, PT Petrosea Tbk beroperasi sebagai anak perusahaan PT Caraka Reksa Optima.")
+    st.write("Sumber Data Set dari Finance yahoo.com : https://github.com/asimcode2050/Asim-Code-Youtube-Channel-Code/blob/main/python/yahoo_finance.py ")
+    st.write("Source Code Aplikasi ada di Github anda bisa acces di link : https://elmatiaaa.github.io/prosaindata/Uas_Kelompok.html")
+ 
 
 with data:
     df = pd.read_csv('https://raw.githubusercontent.com/elmatiaaa/prosaindata/main/new.csv')

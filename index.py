@@ -110,69 +110,75 @@ with modeling:
         dt_pred = dt.predict(test)
         #Accuracy
         dt_akurasi = round(100 * accuracy_score(test_label,dt_pred))
+with modeling:
+    st.header("Modeling")
 
-        if submitted :
-            if k_nn :
-                st.write("Model KNN accuracy score : {0:0.2f}" . format(knn_akurasi))
-            if destree :
-                st.write("Model Decision Tree accuracy score : {0:0.2f}" . format(dt_akurasi))
-        
-        grafik = st.form_submit_button("Grafik akurasi semua model")
-        if grafik:
-            data = pd.DataFrame({
-                'Akurasi' : [knn_akurasi, dt_akurasi],
-                'Model' : [ 'K-NN', 'Decission Tree'],
-            })
+    with st.form("model_form"):
+        st.subheader("Model Selection")
+        k_nn = st.checkbox("K-Nearest Neighbor")
+        decision_tree = st.checkbox("Decision Tree")
+        submitted = st.form_submit_button("Submit")
+
+        if submitted:
+            if k_nn:
+                K = 10
+                knn = KNeighborsClassifier(n_neighbors=K)
+                knn.fit(training, training_label)
+                knn_predict = knn.predict(test)
+                knn_accuracy = round(100 * accuracy_score(test_label, knn_predict))
+                st.write("Model K-Nearest Neighbor accuracy score: {:.2f}".format(knn_accuracy))
+
+            if decision_tree:
+                dt = DecisionTreeClassifier()
+                dt.fit(training, training_label)
+                dt_pred = dt.predict(test)
+                dt_accuracy = round(100 * accuracy_score(test_label, dt_pred))
+                st.write("Model Decision Tree accuracy score: {:.2f}".format(dt_accuracy))
+
+        if st.form_submit_button("Grafik akurasi semua model"):
+            models = []
+            accuracies = []
+
+            if k_nn:
+                models.append("K-Nearest Neighbor")
+                accuracies.append(knn_accuracy)
+
+            if decision_tree:
+                models.append("Decision Tree")
+                accuracies.append(dt_accuracy)
+
+            data = pd.DataFrame({"Model": models, "Akurasi": accuracies})
 
             chart = (
                 alt.Chart(data)
                 .mark_bar()
                 .encode(
-                    alt.X("Akurasi"),
-                    alt.Y("Model"),
-                    alt.Color("Akurasi"),
-                    alt.Tooltip(["Akurasi", "Model"]),
+                    x="Akurasi",
+                    y=alt.Y("Model", sort="-x"),
+                    color="Akurasi",
+                    tooltip=["Akurasi", "Model"],
                 )
+                .properties(width=600, height=300)
                 .interactive()
             )
-            st.altair_chart(chart,use_container_width=True)
-            
-  
+
+            st.altair_chart(chart)
+
 with implementation:
-    with st.form("my_form"):
-        st.subheader("Implementasi") 
-        Open = st.number_input('input Open : ')
-        High = st.number_input('Input High : ')
-        Low= st.number_input('Input Low : ')
-        Close = st.number_input('Input Close : ')
-        AdjClose = st.number_input('Input AdjClose : ')
-        model = st.selectbox('Pilihlah model yang akan anda gunakan untuk melakukan prediksi?',
-                ( 'K-NN', 'Decision Tree'))
+    st.header("Implementation")
 
+    with st.form("implementation_form"):
+        st.subheader("Implementasi")
+        Open = st.number_input("Input Open:")
+        High = st.number_input("Input High:")
+        Low = st.number_input("Input Low:")
+        Close = st.number_input("Input Close:")
+        AdjClose = st.number_input("Input AdjClose:")
+        model = st.selectbox(
+            "Pilihlah model yang akan anda gunakan untuk melakukan prediksi?",
+            ("K-Nearest Neighbor", "Decision Tree"),
+        )
         prediksi = st.form_submit_button("Submit")
+
         if prediksi:
-            inputs = np.array([
-                'Open',
-                'High',
-                'Low',
-                'Close',
-                'AdjClose'
-               
-            ])
-
-            df_min = X.min()
-            df_max = X.max()
-            input_norm = ((inputs - df_min) / (df_max - df_min))
-            input_norm = np.array(input_norm).reshape(1, -1)
-            if model == 'K-NN':
-                mod = knn 
-            if model == 'Decision Tree':
-                mod = dt
-
-            input_pred = mod.predict(input_norm)
-
-
-            st.subheader('Hasil Prediksi')
-            st.write('Menggunakan Pemodelan :', model)
-
-            st.write(input_pred)
+            inputs = np.array([Open, High,

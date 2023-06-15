@@ -14,73 +14,53 @@ from sklearn.tree import DecisionTreeClassifier
 # warnings.filterwarnings("ignore")
 
 
-st.title("PENAMBANGAN DATA C")
+st.title("Web Apps - Star Dataset to Predict Stars Types")
 
-data_set_description, upload_data, preprocessing, modeling, implementation = st.tabs(["Data Set Description", "Data", "Preprocessing", "Modeling", "Implementation"])
+st.write("================================================================================")
+
+st.write("Name :Isnaini")
+st.write("Nim  :200411100038")
+st.write("Grade: Penambangan Data c")
+
+data_set_description, data, preprocessing, modeling, implementation = st.tabs(["Data Set Description", "Data", "Preprocessing", "Modeling", "Implementation"])
 
 with data_set_description:
-    st.write("##### Nama  : Ahlaqul Karimah M ")
-    st.write("##### Nim   : 200411100008 ")
-    st.write("##### Kelas : Penambangan Data C ")
     st.write("""# Data Set Description """)
-    st.write("###### Data Set Ini Adalah : Classification on Fish market (Klasifikasi dipasar ikan) ")
-    st.write("###### Sumber Data Set dari Kaggle : https://www.kaggle.com/code/hongsean/tutorial-knn-classification-on-fish-market/notebook")
-    st.write("""###### Penjelasan setiap kolom : """)
-    st.write("""1. Species (Jenis ) :
-    
-    jenis :Spesies atau jenis adalah suatu peringkat taksonomi yang dipakai dalam klasifikasi biologis untuk merujuk pada satu atau beberapa kelompok individu makhluk hidup (populasi) yang serupa dan dapat saling membuahi satu sama lain di dalam kelompoknya (saling berbagi gen) sehingga menghasilkan keturunan yang fertil (subur).
-    ikan : Ikan adalah anggota vertebrata poikilotermik (berdarah dingin)[1] yang hidup di air dan bernapas dengan insang. Ikan merupakan kelompok vertebrata yang paling beraneka ragam dengan jumlah spesies lebih dari 27,000 di seluruh dunia. Secara taksonomi, ikan tergolong kelompok paraphyletic yang hubungan kekerabatannya masih diperdebatkan; biasanya ikan dibagi menjadi ikan tanpa rahang (kelas Agnatha, 75 spesies termasuk lamprey dan ikan hag), ikan bertulang rawan (kelas Chondrichthyes, 800 spesies termasuk hiu dan pari), dan sisanya tergolong ikan bertulang keras (kelas Osteichthyes).
+    st.write("###### Data Set Ini Adalah : Predict Star Types ")
+    st.write("###### Sumber Data Set dari Kaggle : https://www.kaggle.com/datasets/deepu1109/star-dataset")
+    st.write("""Dalam dataset ini terdapat 59 data dan 7 kolom yaitu Temperature_(K),Luminosity(L/Lo),Radius(R/Ro),Absolute_magnitude(Mv),Star_type,Star_Color,Spectral_Class. 
     """)
-    st.write("""2. weight (Bobot) :
+    st.write("""###### DATASET INFO : """)
+    st.write("""1. Ini adalah kumpulan data yang terdiri dari beberapa fitur bintang, diantaranya :  :
+    Absolute Temperature (in K)
+    Relative Luminosity (L/Lo)
+    Relative Radius (R/Ro)
+    Absolute Magnitude (Mv)
+    Star Color (white,Red,Blue,Yellow,yellow-orange etc)
+    Spectral Class (O,B,A,F,G,K,,M)
+    Star Type *(Red Dwarf, Brown Dwarf, White Dwarf, Main Sequence , SuperGiants, HyperGiants)*
+    Lo = 3.828 x 10^26 Watts (Avg Luminosity of Sun)
+    Ro = 6.9551 x 10^8 m (Avg Radius of Sun)
+    """)
+    st.write("""2.Spectral Class :
+    ini akan menjadi outputnya yaitu kelas scpectral.Dalam Aplikasi ini  akan emnghasilkan 7 prediksi  yaitu O,B,A,F,G,K,,M.
+    """)
+    st.write("""Memprediksi Spectral Class (output) :
 
-    bobot : bobot yang di ada di dataset
-    """)
-    st.write("""3. length1 (Panjang1) :
-
-    panjang1 : panjang ikan yang ada  di dataset
-    """)
-    st.write("""4. length1 (Panjang2) :
-
-    panjang2 : panjang ikan yang ada  di dataset
-    """)
-    st.write("""5. length2 (Panjang3) :
-
-    panjang3 : panjang ikan yang ada  di dataset
-    """)
-    st.write("""6. height (Tinggi) :
-
-    tinggi : tinggi ikan yang ada di sataset
-    """)
-    st.write("""7. width (Lrbar) :
-
-    Output (keluaran)
-    """)
-    st.write("""Menggunakan Kolom (input) :
-
-    precipitation
-    tempmax * tempmin
-    wind
-    """)
-    st.write("""Mengklasifikasi ikan di pasar   (output) :
-    
-    1. Bream    : istilah umum bagi sejumlah spesies ikan air tawar dan ikan laut dari beragam genus yang meliputi: Abramis (misalnya A. brama, terkadang disebut bream air tawar).
-    2. Parkki   : -
-    3. Perch    : merupakan spesies ikan yang berwarna perak dengan semburat biru. Mereka memiliki mata hitam gelap yang khas dengan cincin luar berwarna kuning cerah.
-    4. Pike     : ikan dengan bentuk Mulut dan hidung berbentuk moncong dengan gigi terlihat mencolok banyak di rahang. Sirip kekuningan atau coklat kemerahan, punggung, dubur, dan ekor dengan bintik-bintik gelap menyebar. Biasanya ditemukan di air tawar meskipun baru-baru ditemukan hidup dalam air dengan kadar garam yang sedikit lebih rendah dari laut.
-    5. Roach    : merupakan ikan air tawar yang berasal dari perairan di wilayah Eropa dan Asia. Ikan jenis ini mampu hidup di perairan payau. Rutilus ritilus adalah jenis ikan omnivora yang tersebar luas di wilayah Eropa dan menjadi invasif di wilayah Irlandia dan Italia.
-    6. Smelt    : sejenis ikan kecil yang dipakai sebagai umpan.
-    7. Whitefish: adalah satu istilah perikanan yang merujuk kepada beberapa spesies ikan demersal dengan sirip, khususnya kod (Gadus morhua), whiting (Merluccius bilinearis), dan haddock (Melanogrammus aeglefinus).
+    1. O
+    2. B
+    3. A 
+    4. F
+    5.G
+    6.K
+    7.M
     
     """)
-    st.write("###### Aplikasi ini untuk : Classification on Fish market (Klasifikasi ikan di Pasar) ")
-    st.write("###### Source Code Aplikasi ada di Github anda bisa acces di link : https://github.com/08-Ahlaqul-Karimah/project-data-mining ")
+    st.write("###### Aplikasi ini untuk : Star Dataset To Predict Star Types (Kumpulan Data Bintang Untuk Memprediksi Jenis Bintang) ")
+    st.write("###### Source Code Aplikasi ada di Github anda bisa acces di link : https://github.com/135-ShintaNuriyatulMahmudiyah/PenambanganDataWeb ")
+    st.write("###### Untuk Wa saya anda bisa hubungi nomer ini : http://wa.me/6285704097096 ")
 
-with upload_data:
-    # uploaded_files = st.file_uploader("Upload file CSV", accept_multiple_files=True)
-    # for uploaded_file in uploaded_files:
-    #     df = pd.read_csv(uploaded_file)
-    #     st.write("Nama File Anda = ", uploaded_file.name)
-    #     st.dataframe(df)
+with data:
     df = pd.read_csv('https://raw.githubusercontent.com/elmatiaaa/prosaindata/main/new.csv')
     st.dataframe(df)
 
@@ -94,16 +74,18 @@ with preprocessing:
     - min = nilai minimum semua data asli
     - max = nilai maksimum semua data asli
     """)
-    df = df.drop(columns=['Close','AdjClose'])
+    
+
+    
+    df = df.drop(columns=['Date'])
     #Mendefinisikan Varible X dan Y
-    X = df[['Date','Open','High','Low']]
-    y = df['Volume'].values
+    X = df[['Open','High','Low','Close','AdjClose']]
+    y = df["Volume"].values
     df
     X
     df_min = X.min()
     df_max = X.max()
-    
-    #NORMALISASI NILAI X
+      #NORMALISASI NILAI X
     scaler = MinMaxScaler()
     #scaler.fit(features)
     #scaler.transform(features)
@@ -124,85 +106,24 @@ with preprocessing:
         '2' : [dumies[1]],
         '3' : [dumies[2]],
         '4' : [dumies[3]],
-        '5' : [dumies[4]],
-        '6' : [dumies[5]],
-        '7' : [dumies[6]],
         
     })
 
     st.write(labels)
 
-    # st.subheader("""Normalisasi Data""")
-    # st.write("""Rumus Normalisasi Data :""")
-    # st.image('https://i.stack.imgur.com/EuitP.png', use_column_width=False, width=250)
-    # st.markdown("""
-    # Dimana :
-    # - X = data yang akan dinormalisasi atau data asli
-    # - min = nilai minimum semua data asli
-    # - max = nilai maksimum semua data asli
-    # """)
-    # df.weather.value_counts()
-    # df = df.drop(columns=["date"])
-    # #Mendefinisikan Varible X dan Y
-    # X = df.drop(columns=['weather'])
-    # y = df['weather'].values
-    # df_min = X.min()
-    # df_max = X.max()
-
-    # #NORMALISASI NILAI X
-    # scaler = MinMaxScaler()
-    # #scaler.fit(features)
-    # #scaler.transform(features)
-    # scaled = scaler.fit_transform(X)
-    # features_names = X.columns.copy()
-    # #features_names.remove('label')
-    # scaled_features = pd.DataFrame(scaled, columns=features_names)
-
-    # #Save model normalisasi
-    # from sklearn.utils.validation import joblib
-    # norm = "normalisasi.save"
-    # joblib.dump(scaled_features, norm) 
-
-
-    # st.subheader('Hasil Normalisasi Data')
-    # st.write(scaled_features)
-
+   
 with modeling:
     training, test = train_test_split(scaled_features,test_size=0.2, random_state=1)#Nilai X training dan Nilai X testing
     training_label, test_label = train_test_split(y, test_size=0.2, random_state=1)#Nilai Y training dan Nilai Y testing
+
     with st.form("modeling"):
         st.subheader('Modeling')
         st.write("Pilihlah model yang akan dilakukan pengecekkan akurasi:")
-        naive = st.checkbox('Gaussian Naive Bayes')
         k_nn = st.checkbox('K-Nearest Neighboor')
         destree = st.checkbox('Decission Tree')
         submitted = st.form_submit_button("Submit")
 
-        # NB
-        GaussianNB(priors=None)
-
-        # Fitting Naive Bayes Classification to the Training set with linear kernel
-        gaussian = GaussianNB()
-        gaussian = gaussian.fit(training, training_label)
-
-        # Predicting the Test set results
-        y_pred = gaussian.predict(test)
-    
-        y_compare = np.vstack((test_label,y_pred)).T
-        gaussian.predict_proba(test)
-        gaussian_akurasi = round(100 * accuracy_score(test_label, y_pred))
-        # akurasi = 10
-
-        #Gaussian Naive Bayes
-        # gaussian = GaussianNB()
-        # gaussian = gaussian.fit(training, training_label)
-
-        # probas = gaussian.predict_proba(test)
-        # probas = probas[:,1]
-        # probas = probas.round()
-
-        # gaussian_akurasi = round(100 * accuracy_score(test_label,probas))
-
+       
         #KNN
         K=10
         knn=KNeighborsClassifier(n_neighbors=K)
@@ -220,8 +141,6 @@ with modeling:
         dt_akurasi = round(100 * accuracy_score(test_label,dt_pred))
 
         if submitted :
-            if naive :
-                st.write('Model Naive Bayes accuracy score: {0:0.2f}'. format(gaussian_akurasi))
             if k_nn :
                 st.write("Model KNN accuracy score : {0:0.2f}" . format(knn_akurasi))
             if destree :
@@ -230,8 +149,8 @@ with modeling:
         grafik = st.form_submit_button("Grafik akurasi semua model")
         if grafik:
             data = pd.DataFrame({
-                'Akurasi' : [gaussian_akurasi, knn_akurasi, dt_akurasi],
-                'Model' : ['Gaussian Naive Bayes', 'K-NN', 'Decission Tree'],
+                'Akurasi' : [knn_akurasi, dt_akurasi],
+                'Model' : [ 'K-NN', 'Decission Tree'],
             })
 
             chart = (
@@ -246,41 +165,42 @@ with modeling:
                 .interactive()
             )
             st.altair_chart(chart,use_container_width=True)
+            
   
 with implementation:
     with st.form("my_form"):
-        st.subheader("Implementasi")
-        Weight = st.number_input('Masukkan berat ikan (Weight) : ')
-        Length1 = st.number_input('Masukkan panjang vertikal ikan (Length1) : ')
-        Height = st.number_input('Masukkan tinggi ikan (Height) : ')
-        Width = st.number_input('Masukkan lebar ikan (Width) : ')
-        
+        st.subheader("Implementasi") 
+        Open = st.number_input('input Open : ')
+        High = st.number_input('Input High : ')
+        Low= st.number_input('Input Low : ')
+        Close = st.number_input('Input Close : ')
+        AdjClose = st.number_input('Input AdjClose : ')
         model = st.selectbox('Pilihlah model yang akan anda gunakan untuk melakukan prediksi?',
-                ('Gaussian Naive Bayes', 'K-NN', 'Decision Tree'))
+                ( 'K-NN', 'Decision Tree'))
 
         prediksi = st.form_submit_button("Submit")
         if prediksi:
             inputs = np.array([
-                Date,
-                Open,
-                High,
-                Low
+                'Open',
+                'High',
+                'Low',
+                'Close',
+                'AdjClose'
+               
             ])
 
             df_min = X.min()
             df_max = X.max()
             input_norm = ((inputs - df_min) / (df_max - df_min))
             input_norm = np.array(input_norm).reshape(1, -1)
-
-            if model == 'Gaussian Naive Bayes':
-                mod = gaussian
+\
             if model == 'K-NN':
                 mod = knn 
             if model == 'Decision Tree':
                 mod = dt
 
-               
             input_pred = mod.predict(input_norm)
+
 
             st.subheader('Hasil Prediksi')
             st.write('Menggunakan Pemodelan :', model)

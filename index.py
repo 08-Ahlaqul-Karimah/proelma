@@ -84,33 +84,6 @@ with preprocessing:
 
    
 with modeling:
-    training, test = train_test_split(scaled_features,test_size=0.2, random_state=1)#Nilai X training dan Nilai X testing
-    training_label, test_label = train_test_split(y, test_size=0.2, random_state=1)#Nilai Y training dan Nilai Y testing
-
-    with st.form("modeling"):
-        st.subheader('Modeling')
-        st.write("Pilihlah model yang akan dilakukan pengecekkan akurasi:")
-        k_nn = st.checkbox('K-Nearest Neighboor')
-        destree = st.checkbox('Decission Tree')
-        submitted = st.form_submit_button("Submit")
-
-       
-        #KNN
-        K=10
-        knn=KNeighborsClassifier(n_neighbors=K)
-        knn.fit(training,training_label)
-        knn_predict=knn.predict(test)
-
-        knn_akurasi = round(100 * accuracy_score(test_label,knn_predict))
-
-        #Decission Tree
-        dt = DecisionTreeClassifier()
-        dt.fit(training, training_label)
-        # prediction
-        dt_pred = dt.predict(test)
-        #Accuracy
-        dt_akurasi = round(100 * accuracy_score(test_label,dt_pred))
-with modeling:
     st.header("Modeling")
 
     with st.form("model_form"):
@@ -181,4 +154,4 @@ with implementation:
         prediksi = st.form_submit_button("Submit")
 
         if prediksi:
-            inputs = np.array([Open, High, Low, Close, AdjClose])
+            inputs = np.array([Open, High,

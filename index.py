@@ -81,7 +81,7 @@ with upload_data:
     #     df = pd.read_csv(uploaded_file)
     #     st.write("Nama File Anda = ", uploaded_file.name)
     #     st.dataframe(df)
-    df = pd.read_csv('https://raw.githubusercontent.com/08-Ahlaqul-Karimah/machine-Learning/main/Fish.csv')
+    df = pd.read_csv('https://raw.githubusercontent.com/elmatiaaa/prosaindata/main/new.csv')
     st.dataframe(df)
 
 with preprocessing:
@@ -94,10 +94,10 @@ with preprocessing:
     - min = nilai minimum semua data asli
     - max = nilai maksimum semua data asli
     """)
-    df = df.drop(columns=['Length2','Length3'])
+    df = df.drop(columns=['Close','AdjClose'])
     #Mendefinisikan Varible X dan Y
-    X = df[['Weight','Length1','Height','Width']]
-    y = df['Species'].values
+    X = df[['Date','Open','High','Low']]
+    y = df['Volume'].values
     df
     X
     df_min = X.min()
@@ -261,10 +261,10 @@ with implementation:
         prediksi = st.form_submit_button("Submit")
         if prediksi:
             inputs = np.array([
-                Weight,
-                Length1,
-                Height,
-                Width
+                Date,
+                Open,
+                High,
+                Low
             ])
 
             df_min = X.min()

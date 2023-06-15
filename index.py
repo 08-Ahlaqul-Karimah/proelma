@@ -15,7 +15,7 @@ st.title("Data PT Petrosea Tbk")
 st.write("Name : Elmatia Dwi Uturiyah")
 st.write("Nim  :200411100113")
 
-data_set_description, upload_data, preprocessing, modeling, implementation = st.tabs(["Data Set Description", "Data", "Preprocessing", "Modeling", "Implementation"])
+data_set_description, data, preprocessing, modeling, implementation = st.tabs(["Data Set Description", "Data", "Preprocessing", "Modeling", "Implementation"])
 
 
 with data_set_description:
